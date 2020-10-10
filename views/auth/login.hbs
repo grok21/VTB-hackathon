@@ -1,0 +1,26 @@
+<div class="auth"> 
+  <div class="row">
+    <div id="login" class="col s6 offset-s3">
+      {{#if loginError}}
+        <p class="alert">{{loginError}}</p>
+      {{/if}}  
+      <h4>Войти в личный кабинет</h4>
+      <form action="/auth/login" method="POST">
+        <div class="input-field">
+            <input id="email" name="email" type="email" class="validate" required min="1">
+            <label for="email">E-mail</label>
+            <span class="helper-text" data-error="Введите e-mail"></span>
+        </div>
+        <div class="input-field">
+            <input id="password" name="password" type="password" class="validate" required min="1">
+            <label for="password">Password</label>
+            <span class="helper-text" data-error="Введите пароль"></span>
+        </div>
+        <input type="hidden" name="_csrf" value="{{csrf}}">
+
+        <button class="btn btn-primary" type="submit">Войти</button>
+        <p><a href="/reset">Забыли пароль?</a></p>
+      </form>
+    </div>
+   </div>
+</div>

@@ -1,10 +1,13 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const exphbs = require('express-handlebars')
+const session = require('express-session')
 const User = require('./models/user')
 const Transaction = require('./models/transaction')
 const keys = require('./keys/keys.dev.js')
 const homeRoutes = require('./routes/home')
+const authRoutes = require('./routes/auth')
+const cabinetRoutes = require('./routes/cabinet')
 
 const app = express()
 
@@ -31,10 +34,10 @@ app.set('views', 'views')
 app.use(express.urlencoded({extended: true}))
 
 
-
-
 // Routes 
+app.use('/', authRoutes)
 app.use('/home', homeRoutes)
+app.use('/cabinet', cabinetRoutes)
 
 
 
