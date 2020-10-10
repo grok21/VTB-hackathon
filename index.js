@@ -8,6 +8,7 @@ const keys = require('./keys/keys.dev.js')
 const homeRoutes = require('./routes/home')
 const authRoutes = require('./routes/auth')
 const cabinetRoutes = require('./routes/cabinet')
+const varMiddleware = require('./middleware/variables')
 
 const app = express()
 
@@ -32,6 +33,13 @@ app.set('views', 'views')
 // Styles and images folder register
 //app.use(express.static(path.join(__dirname, 'public')))
 app.use(express.urlencoded({extended: true}))
+
+app.use(session({
+    secret: 'secret phrase',
+    resave: false,
+    saveUninitialized: false
+}))
+app.use(varMiddleware)
 
 
 // Routes 

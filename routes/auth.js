@@ -8,4 +8,9 @@ router.get('/', (req, res) => {
     })
 })
 
+router.post('/login', async (req, res) => {
+    req.session.isAuthenticated = true
+    res.redirect('/home')
+})
+
 module.exports = router
