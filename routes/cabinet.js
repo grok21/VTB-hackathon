@@ -7,7 +7,6 @@ const path = require('path')
 const User = require('../models/user')
 const {PythonShell} = require('python-shell')
 
-
 router.get('/', auth, (req, res) => {
     res.render('cabinet/main_page', {
         title: 'Cabinet',
