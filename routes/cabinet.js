@@ -1,5 +1,7 @@
 const {Router} = require('express')
 const auth = require('../middleware/auth')
+const speakeasy = require('speakeasy')
+const qrcode = require('qrcode')
 const router = Router()
 const path = require('path')
 const User = require('../models/user')
@@ -29,14 +31,48 @@ router.post('/transfer', auth, async (req, res) => {
         if (err) {
             throw err
         }
-
-        if(result[0]) {
+        console.log(result[0])
+        //res.redirect('/cabinet/validate')
+        if(candidate[`${result[0]}`]) {
             console.log('Transaction is ok')
         } else {
             console.log('Transaction is not ok')
         }
     })
     res.redirect('/cabinet')
+})
+
+router.get('/validate', auth, (req, res) => { 
+    
+    const secret = speakeasy.generateSecret({
+        name: "VTB_authenticate"
+    })
+
+    req.session.secret = secret
+    qrcode.toDataURL(secret.otpauth_url, function(err, data) {
+        req.session.qrcode_url = data;
+    })
+
+    res.render('cabinet/validate', {
+        title: 'Validate',
+        isCabinet: true,
+        qr_image: req.session.qrcode_url
+    })
+})
+
+router.post('/validate', auth, (req, res) => {
+    const verified = speakeasy.totp.verify({
+        secret: req.session.secret['ascii'],
+        encoding: 'ascii',
+        token: req.body.token
+    })
+
+    console.log(verified)
+    if (!verified) {
+        res.redirect('/cabinet')
+    } else {
+        res.redirect('/cabinet/validate')
+    }
 })
 
 module.exports = router

@@ -19,6 +19,8 @@
     "helmet": "^4.1.1",
     "mongoose": "^5.10.9",
     "nodemon": "^2.0.4",
-    "python-shell": "^2.0.2"
+    "python-shell": "^2.0.2",
+    "qrcode": "^1.4.4",
+    "speakeasy": "^2.0.0"
   }
 }

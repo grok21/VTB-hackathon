@@ -85,6 +85,25 @@ async function start() {
     const transaction = new Transaction({transaction_id: '-1', user_id: '-1',  cardholder_name: 'Vadim', transaction_amount: 10, division: 3, cluster: 2})
     await transaction.save()
     */
+
+/*
+   const user1 = new User({user_id: '1', cardholder_name: 'DONNA MARIE HEPP', email: 'donna_marie_hepp@hack.ru', password: 'MMZlUwGwKWZfr9Xik6an', money_value: 987, cluster_0: 1, cluster_1: 0, cluster_2: 1, cluster_3: 0, cluster_4: 1})
+   await user1.save()
+
+const user2 = new User({user_id: '2', cardholder_name: 'ANTOLIN ALDAY', email: 'antolin_alday@yandex.ru', password: 'InwPUe4iTs3dpXbXpLv', money_value: 3548, cluster_0: 1, cluster_1: 0, cluster_2: 1, cluster_3: 0, cluster_4: 0})
+   await user2.save()
+
+const user3 = new User({user_id: '3', cardholder_name: 'CECILE PHAM', email: 'cecile_pham@mail.ru', password: 'e91tEbWwzR4zcKZ9WWY', money_value: 3345, cluster_0: 1, cluster_1: 0, cluster_2: 0, cluster_3: 0, cluster_4: 0})
+   await user3.save()
+
+const user4 = new User({user_id: '4', cardholder_name: 'GREG CONNOLLY', email: 'greg_connolly@gmail.com', password: 'tsmUI7dSfFRwisPXcrnpPeF', money_value: 4130, cluster_0: 1, cluster_1: 0, cluster_2: 0, cluster_3: 0, cluster_4: 1})
+   await user4.save()
+
+const user5 = new User({user_id: '5', cardholder_name: 'BRENDA MERCADO', email: 'brenda_mercado@hack.ru', password: 'FGz9gkp8MjoRw8GcLKHrZ', money_value: 2105, cluster_0: 1, cluster_1: 0, cluster_2: 0, cluster_3: 0, cluster_4: 0})
+   await user5.save()
+*/
+
+
 }
 
 start()
