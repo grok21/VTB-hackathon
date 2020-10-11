@@ -78,11 +78,11 @@ async function start() {
     }
 
     /*
-    const user = new User({user_id: '1', email: '123@gb.com', password: '1234', name: 'Vadim'})
+    const user = new User({user_id: '-1', cardholder_name: 'Vadim', email: '123@gb.com', password: '1234', money_value: 100, cluster_0: 1, cluster_1: 0, cluster_2: 0, cluster_3: 1, cluster_4: 0})
     await user.save()
 
     /*
-    const transaction = new Transaction({user_id: '1', transaction_id: '1', amount: 1234, region: 'Russia'})
+    const transaction = new Transaction({transaction_id: '-1', user_id: '-1',  cardholder_name: 'Vadim', transaction_amount: 10, division: 3, cluster: 2})
     await transaction.save()
     */
 }

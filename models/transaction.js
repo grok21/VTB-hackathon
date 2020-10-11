@@ -1,22 +1,28 @@
 const {Schema, model} = require('mongoose')
 
 const transactionSchema = new Schema({
-    user_id: {
-        //type: Schema.Types.ObjectId, 
-        type: Number,
-        required: true
-    }, 
     transaction_id: {
-        //type: Schema.Types.ObjectId,
+        type: Number,
+        required: true
+    },
+    user_id: {
         type: Number,
         required: true
     }, 
-    amount: {
+    cardholder_name: {
+        type: String,
+        required: true
+    }, 
+    transaction_amount: {
         type: Number, 
         required: true
     }, 
-    region: {
-        type: String, 
+    division: {
+        type: Number, 
+        required: true
+    }, 
+    cluster: {
+        type: Number, 
         required: true
     }
 })
