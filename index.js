@@ -1,5 +1,6 @@
 const express = require('express')
 const mongoose = require('mongoose')
+const helmet = require('helmet')
 const path = require('path')
 const csrf = require('csurf')
 const exphbs = require('express-handlebars')
@@ -50,6 +51,7 @@ app.use(session({
     store
 }))
 app.use(csrf())
+app.use(helmet())
 app.use(varMiddleware)
 
 
