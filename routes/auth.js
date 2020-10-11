@@ -9,14 +9,14 @@ router.get('/', (req, res) => {
     })
 })
 
-/*
+
 router.post('/', async (req, res) => {
     try {
         const {email, password} = req.body
         
         // Trying to find this user
         const candidate = await User.findOne({ email })
-
+        
         // If user exists - check passed password 
         if(candidate) {
 
@@ -29,10 +29,9 @@ router.post('/', async (req, res) => {
                     if(err) {
                         throw(err)
                     } else {
-                        res.redirect('/')
+                        res.redirect('/home')
                     }
                 })
-                res.redirect('/home')
 
             // If password isn't correct - try again
             } else {
@@ -42,12 +41,12 @@ router.post('/', async (req, res) => {
         // If user doesn't exist - try again
         } else {
             res.redirect('/')
-        }
+        } 
     } catch(e) {
         console.log(e)
     }
 })
-*/
+
 
 router.post('/', async (req, res) => {
     req.session.isAuthenticated = true
