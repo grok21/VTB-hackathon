@@ -1,9 +1,6 @@
 <div class="auth"> 
   <div class="row">
-    <div id="login" class="col s6 offset-s3">
-      {{#if loginError}}
-        <p class="alert">{{loginError}}</p>
-      {{/if}}  
+    <div id="login" class="col s6 offset-s3"> 
       <h4>Войти в личный кабинет</h4>
       <form action="/" method="POST">
         <div class="input-field">
@@ -13,7 +10,7 @@
         </div>
         <div class="input-field">
             <input id="password" name="password" type="password" class="validate" required min="1">
-            <label for="password">Password</label>
+            <label for="password">Пароль</label>
             <span class="helper-text" data-error="Введите пароль"></span>
         </div>
         <input type="hidden" name="_csrf" value="{{csrf}}">
