@@ -2,6 +2,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 const exphbs = require('express-handlebars')
 const session = require('express-session')
+const MongoStore = require('connect-mongodb-session')(session)
 const User = require('./models/user')
 const Transaction = require('./models/transaction')
 const keys = require('./keys/keys.dev.js')
@@ -21,6 +22,12 @@ const hbs = exphbs.create({
     allowProtoPropertiesByDefault: true
 })
 
+// Saving sessions in MongoDB
+const store = new MongoStore({
+    collection: 'sessions', 
+    uri: keys.MONGODB_URI
+})
+
 // Handlebars-engine register
 app.engine('hbs', hbs.engine)
 
@@ -37,7 +44,8 @@ app.use(express.urlencoded({extended: true}))
 app.use(session({
     secret: 'secret phrase',
     resave: false,
-    saveUninitialized: false
+    saveUninitialized: false, 
+    store
 }))
 app.use(varMiddleware)
 
@@ -68,9 +76,10 @@ async function start() {
     }
 
     /*
-    const user = new User({user_id: '1', login: 'pankus22', password: '1234', name: 'Vadim'})
+    const user = new User({user_id: '1', email: '123@gb.com', password: '1234', name: 'Vadim'})
     await user.save()
 
+    /*
     const transaction = new Transaction({user_id: '1', transaction_id: '1', amount: 1234, region: 'Russia'})
     await transaction.save()
     */
