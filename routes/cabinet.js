@@ -31,15 +31,13 @@ router.post('/transfer', auth, async (req, res) => {
         if (err) {
             throw err
         }
-        console.log(result[0])
-        //res.redirect('/cabinet/validate')
-        if(candidate[`${result[0]}`]) {
-            console.log('Transaction is ok')
+        req.session.trans_ok = Number(candidate[`${result[0]}`])
+        if (req.session.trans_ok) {
+            res.redirect('/cabinet')
         } else {
-            console.log('Transaction is not ok')
+            res.redirect('/cabinet/validate')
         }
     })
-    res.redirect('/cabinet')
 })
 
 router.get('/validate', auth, (req, res) => { 
