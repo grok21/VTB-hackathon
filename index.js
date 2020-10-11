@@ -1,5 +1,6 @@
 const express = require('express')
 const mongoose = require('mongoose')
+const path = require('path')
 const csrf = require('csurf')
 const exphbs = require('express-handlebars')
 const session = require('express-session')
@@ -39,7 +40,7 @@ app.set('view engine', 'hbs')
 app.set('views', 'views')
 
 // Styles and images folder register
-//app.use(express.static(path.join(__dirname, 'public')))
+app.use(express.static(path.join(__dirname, 'public')))
 app.use(express.urlencoded({extended: true}))
 
 app.use(session({
