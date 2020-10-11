@@ -57,9 +57,6 @@ app.use('/', authRoutes)
 app.use('/home', homeRoutes)
 app.use('/cabinet', cabinetRoutes)
 
-
-
-
 const PORT = process.env.PORT || 3000
 
 async function start() {
